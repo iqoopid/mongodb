@@ -19,18 +19,6 @@ Install the mongosh package:
 Three ways:
 1. To install the latest stable version of mongosh with the included OpenSSL libraries
   sudo apt-get install -y mongodb-mongosh
-  If there is "OpenSSL 1.1" Not Found Error:
-  Install OpenSSL 1.1:
-    Download:
-      https://www.openssl.org/source/openssl-1.1.1w.tar.gz (Or find Latest)
-    Extract and Install:
-      tar -xf openssl-1.1.1w.tar.gz
-      cd openssl-1.1.1w
-      ./config
-      make
-      sudo make install
-    Configure:
-      sudo ldconfig
 
 2. To install mongosh with your OpenSSL 1.1 libraries:
   sudo apt-get install -y mongodb-mongosh-shared-openssl11
