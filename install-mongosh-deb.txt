@@ -1,0 +1,42 @@
+https://www.mongodb.com/docs/mongodb-shell/install/#install-mongosh
+
+cat /etc/lsb-release
+
+Ubuntu 22.04 (Jammy)
+
+Import the public key used by the APT system:
+sudo apt-get install gnupg
+wget -qO- https://www.mongodb.org/static/pgp/server-7.0.asc | sudo tee /etc/apt/trusted.gpg.d/server-7.0.asc
+
+Create a list file for MongoDB:
+The list file: "/etc/apt/sources.list.d/mongodb-org-7.0.list"
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+
+Reload local package database:
+sudo apt-get update
+
+Install the mongosh package:
+Three ways:
+1. To install the latest stable version of mongosh with the included OpenSSL libraries
+  sudo apt-get install -y mongodb-mongosh
+  If there is "OpenSSL 1.1" Not Found Error:
+  Install OpenSSL 1.1:
+    Download:
+      https://www.openssl.org/source/openssl-1.1.1w.tar.gz (Or find Latest)
+    Extract and Install:
+      tar -xf openssl-1.1.1w.tar.gz
+      cd openssl-1.1.1w
+      ./config
+      make
+      sudo make install
+    Configure:
+      sudo ldconfig
+
+2. To install mongosh with your OpenSSL 1.1 libraries:
+  sudo apt-get install -y mongodb-mongosh-shared-openssl11
+
+3. To install mongosh with your OpenSSL 3.0 libraries:
+  sudo apt-get install -y mongodb-mongosh-shared-openssl3
+
+Confirm that mongosh installed successfully:
+mongosh --version
