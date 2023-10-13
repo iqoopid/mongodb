@@ -11,7 +11,11 @@ Extract the files from the downloaded tarball file:
 tar -zxvf mongodb-linux-*-7.0.2.tgz
 
 Ensure the binaries are in a directory listed in your PATH environment variable:
-sudo cp <tarball-file-directory>/bin/* /usr/local/bin/
+1. Copy the binaries into a directory listed in your PATH variable such as /usr/local/bin:
+  sudo cp <tarball-file-directory>/bin/* /usr/local/bin/
+OR
+2. Create symbolic links to the binaries from a directory listed in your PATH variable:
+  sudo ln -s  /path/to/the/mongodb-directory/bin/* /usr/local/bin/
 
 Create the data and log directories:
 sudo mkdir -p /var/lib/mongo
@@ -39,8 +43,8 @@ Verify that MongoDB has started successfully:
 cat /var/log/mongodb/mongod.log
 Check for: "waiting for connections on port 27017"
 
-Refer Document mongosh-install-deb.txt:
-For mongosh installation
+Install mongosh:
+https://github.com/iqoopid/mongodb/blob/main/install-mongosh-deb.txt
 
 Begin using MongoDB:
 mongosh
